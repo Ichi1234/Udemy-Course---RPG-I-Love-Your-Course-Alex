@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02836c79ce36d14a989267c7cc1c087, type: 3}
+  m_Name: Consumable Data - Scroll of Vengence
+  m_EditorClassIdentifier: 
+  itemName: Scroll of Vengence
+  itemIcon: {fileID: 1124708073, guid: f2c6c3ff4887f4949b80f6591e045cc8, type: 3}
+  itemType: 4
+  maxStackSize: 5
+  itemEffect: {fileID: 11400000, guid: ecc0c170dbb60594dbe1aefb1d73f82c, type: 2}
