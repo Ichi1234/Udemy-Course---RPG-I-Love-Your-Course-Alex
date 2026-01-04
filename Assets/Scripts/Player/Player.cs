@@ -166,6 +166,34 @@ public class Player : Entity
         stateMachine.ChangeState(basicAttackState);
     }
 
+    private void TryInteract()
+    {
+        Transform closet = null;
+        float closetDistance = Mathf.Infinity;
+        Collider2D[] objectAround = Physics2D.OverlapCircleAll(transform.position, 1.5f);
+
+        foreach (var target in objectAround)
+        {
+            IInteractable interactable = target.GetComponent<IInteractable>();
+            if (interactable == null) continue;
+
+            float distance = Vector2.Distance(transform.position, target.transform.position);
+
+            if (distance < closetDistance)
+            {
+                closetDistance = distance;
+                closet = target.transform;
+            }
+        }
+
+        if (closet == null)
+        {
+            return;
+        }
+
+        closet.GetComponent<IInteractable>().Interact();
+    }
+
     private void OnEnable() // this is event base Ichi don't forgot Action is global not change any state, so we did it here
     {
         input.Enable();
@@ -174,6 +202,8 @@ public class Player : Entity
 
         input.Player.Movement.performed += context => moveInput = context.ReadValue<Vector2>();
         input.Player.Movement.canceled += context => moveInput = Vector2.zero;
+
+        input.Player.Interact.performed += ctx => TryInteract();
 
         input.Player.ToggleSkillTreeUI.performed += ctx => ui.ToggleSkillTreeUI();
         input.Player.ToggleInventoryUI.performed += ctx => ui.ToggleInventoryUI();

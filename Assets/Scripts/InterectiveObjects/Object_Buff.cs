@@ -11,6 +11,7 @@ public class Object_Buff : MonoBehaviour
     [SerializeField] private string buffName;
     [SerializeField] private float buffDuration = 4;
 
+    [Header("Floaty Movement")]
     [SerializeField] private float floatSpeed = 1f;
     [SerializeField] private float floatRange = .1f;
     private Vector3 startPosition;
