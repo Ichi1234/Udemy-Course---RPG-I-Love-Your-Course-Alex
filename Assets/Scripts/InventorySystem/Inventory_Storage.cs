@@ -6,6 +6,37 @@ public class Inventory_Storage : Inventory_Base
     private Inventory_Player playerInventory;
     public List<Inventory_Item> materialStash;
 
+    public int GetAvailableAmountOf(ItemDataSO requiredItem)
+    {
+        int amount = 0;
+
+        foreach (var item in playerInventory.itemList)
+        {
+            if (item.itemData == requiredItem)
+            {
+                amount += item.stackSize;
+            }
+        }
+
+        foreach (var item in itemList)
+        {
+            if (item.itemData == requiredItem)
+            {
+                amount += item.stackSize;
+            }
+        }
+
+        foreach (var item in materialStash)
+        {
+            if (item.itemData == requiredItem)
+            {
+                amount += item.stackSize;
+            }
+        }
+
+        return amount;
+    }
+ 
     public void AddMaterialToStash(Inventory_Item itemToAdd)
     {
         var stackableItem = StackableInStash(itemToAdd);
