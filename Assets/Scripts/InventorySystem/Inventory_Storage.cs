@@ -1,28 +1,76 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory_Storage : Inventory_Base
 {
     private Inventory_Player playerInventory;
-    
-    public void SetInventory(Inventory_Player inventory) => this.playerInventory = inventory;
+    public List<Inventory_Item> materialStash;
 
-    public void FromPlayerToStorage(Inventory_Item item)
+    public void AddMaterialToStash(Inventory_Item itemToAdd)
     {
-        if (CanAddItem(item))
+        var stackableItem = StackableInStash(itemToAdd);
+
+        if (stackableItem != null)
         {
-            playerInventory.RemoveItem(item);
-            AddItem(item);
+            stackableItem.AddStack();
+        }
+        else
+        {
+            materialStash.Add(itemToAdd);
         }
 
         TriggerUpdateUI();
     }
 
-    public void FromStorageToPlayer(Inventory_Item item)
+    public Inventory_Item StackableInStash(Inventory_Item itemToAdd)
     {
-        if (playerInventory.CanAddItem(item))
+        List<Inventory_Item> stackableItems = materialStash.FindAll(item => item.itemData == itemToAdd.itemData);
+
+        foreach (var stackable in stackableItems)
         {
-            RemoveItem(item);
-            playerInventory.AddItem(item);
+            if (stackable.CanAddStack())
+            {
+                return stackable;
+            }
+        }
+
+        return null;
+    }
+    
+    public void SetInventory(Inventory_Player inventory) => this.playerInventory = inventory;
+
+    public void FromPlayerToStorage(Inventory_Item item, bool transferFullStack)
+    {
+        int transferAmount = transferFullStack ? item.stackSize : 1;
+
+        for (int i = 0; i < transferAmount; i++)
+        {
+            if (CanAddItem(item))
+            {
+                var itemToAdd = new Inventory_Item(item.itemData);
+
+                playerInventory.RemoveOneItem(item);
+                AddItem(itemToAdd);
+            }
+        }
+
+
+        TriggerUpdateUI();
+    }
+
+    public void FromStorageToPlayer(Inventory_Item item, bool transferFullStack)
+    {
+        int transferAmount = transferFullStack ? item.stackSize : 1;
+
+        for (int i = 0; i < transferAmount; i++)
+        {
+            if (playerInventory.CanAddItem(item))
+            {
+            var itemToAdd = new Inventory_Item(item.itemData);
+
+            RemoveOneItem(item);
+            playerInventory.AddItem(itemToAdd);
+            }
         }
 
         TriggerUpdateUI();

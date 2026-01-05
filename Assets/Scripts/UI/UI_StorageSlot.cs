@@ -16,14 +16,16 @@ public class UI_StorageSlot : UI_ItemSlot
             return;
         }
 
+        bool transferFullStack = Input.GetKey(KeyCode.LeftControl);
+
         if (slotType == StorageSlotType.StorageSlot)
         {
-            storage.FromStorageToPlayer(itemInSlot);
+            storage.FromStorageToPlayer(itemInSlot, transferFullStack);
         }
 
         if (slotType == StorageSlotType.PlayerInventorySlot)
         {
-            storage.FromPlayerToStorage(itemInSlot);
+            storage.FromPlayerToStorage(itemInSlot, transferFullStack);
         }
         ui.itemToolTip.ShowToolTip(false, null);
     }
