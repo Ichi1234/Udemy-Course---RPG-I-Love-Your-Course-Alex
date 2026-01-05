@@ -47,7 +47,7 @@ public class Inventory_Player : Inventory_Base
 
     public void UnequipItem(Inventory_Item itemToUnequip, bool replacingItem = false)
     {
-        if (!CanAddItem() && !replacingItem)
+        if (!CanAddItem(itemToUnequip) && !replacingItem)
         {
             Debug.Log("No Space!");
             return;
