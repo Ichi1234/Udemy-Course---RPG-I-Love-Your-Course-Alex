@@ -9,10 +9,10 @@ public class UI_Storage : MonoBehaviour
     [SerializeField] private UI_ItemSlotParent storageParent;
     [SerializeField] private UI_ItemSlotParent materialStashParent;
 
-    public void SetupStorage(Inventory_Player inventory, Inventory_Storage storage)
+    public void SetupStorageUI(Inventory_Storage storage)
     {
-        this.inventory = inventory;
         this.storage = storage;
+        inventory = storage.playerInventory;
 
         storage.OnInventoryChange += UpdateUI;
         UpdateUI();
@@ -25,8 +25,17 @@ public class UI_Storage : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        UpdateUI();
+    }
+
     private void UpdateUI()
     {
+        if (storage == null)
+        {
+            return;
+        }
         inventoryParent.UpdateSlots(inventory.itemList);
         storageParent.UpdateSlots(storage.itemList);
         materialStashParent.UpdateSlots(storage.materialStash);
