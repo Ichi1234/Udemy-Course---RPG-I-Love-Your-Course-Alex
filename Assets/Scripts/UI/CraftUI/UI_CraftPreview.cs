@@ -66,7 +66,7 @@ public class UI_CraftPreview : MonoBehaviour
             int requiredAmount = requiredItem.stackSize;
 
             craftPreviewSlots[i].gameObject.SetActive(true);
-            craftPreviewSlots[i].SetupMaterialSlot(requiredItem.itemData, avaliableAmount, requiredAmount);
+            craftPreviewSlots[i].SetupPreviewSlot(requiredItem.itemData, avaliableAmount, requiredAmount);
         }
     }
 }

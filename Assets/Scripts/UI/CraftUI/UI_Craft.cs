@@ -22,9 +22,9 @@ public class UI_Craft : MonoBehaviour
     }
 
     private void SetupCraftListButtons()
-    {
-        craftSlots = GetComponentsInChildren<UI_CraftSlot>();
-        craftListButtons = GetComponentsInChildren<UI_CraftListButton>();
+    {   
+        craftSlots = GetComponentsInChildren<UI_CraftSlot>(true);
+        craftListButtons = GetComponentsInChildren<UI_CraftListButton>(true);
     
         foreach (var slot in craftSlots)
         {

@@ -13,12 +13,17 @@ public class Inventory_Item
     public ItemModifier[] modifiers { get; private set; }
     public ItemEffect_DataSO itemEffect;
 
+    public int buyPrice { get; private set; }
+    public float sellPrice { get; private set; }
+
     public Inventory_Item(ItemDataSO itemData)
     {
         this.itemData = itemData;
         itemEffect = itemData.itemEffect;
-        modifiers = EquipmentData()?.modifiers;
+        buyPrice = itemData.itemPrice;
+        sellPrice = itemData.itemPrice * .35f;
 
+        modifiers = EquipmentData()?.modifiers;
         itemId = itemData.itemName + " - " + Guid.NewGuid();
     }
 
@@ -59,17 +64,26 @@ public class Inventory_Item
 
     public string GetItemInfo()
     {
+        StringBuilder sb = new StringBuilder();
+
         if (itemData.itemType == ItemType.Material)
         {
-            return "Used for crafting.";
+            sb.AppendLine("");
+            sb.AppendLine("Used for crafting.");
+            sb.AppendLine("");
+            sb.AppendLine("");
+            return sb.ToString();
         }
 
         if (itemData.itemType == ItemType.Consumable)
         {
-            return itemData.itemEffect.effectDescription;
+            sb.AppendLine("");
+            sb.AppendLine(itemEffect.effectDescription);
+            sb.AppendLine("");
+            sb.AppendLine("");
+            return sb.ToString();
         }
 
-        StringBuilder sb = new StringBuilder();
 
         sb.AppendLine("");
 
@@ -86,6 +100,9 @@ public class Inventory_Item
             sb.AppendLine("Unique Effect:");
             sb.AppendLine(itemEffect.effectDescription);
         }
+
+        sb.AppendLine("");
+        sb.AppendLine("");
 
         return sb.ToString();
     }

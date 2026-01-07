@@ -84,6 +84,8 @@ public class Inventory_Base : MonoBehaviour
         {
             itemList.Remove(itemToRemove);
         }
+
+        OnInventoryChange?.Invoke();
     }
 
     public Inventory_Item FindItem(ItemDataSO itemData)

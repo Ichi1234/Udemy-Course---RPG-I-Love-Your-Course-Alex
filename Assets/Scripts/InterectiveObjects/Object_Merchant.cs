@@ -2,20 +2,46 @@ using UnityEngine;
 
 public class Object_Merchant : Object_NPC, IInteractable
 {
+    private Inventory_Player inventory;
+    private Inventory_Merchant merchant;
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        merchant = GetComponentInChildren<Inventory_Merchant>();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            merchant.FillShopList();
+        }
+            
+    }
+
     public void Interact()
     {
-        throw new System.NotImplementedException();
+        ui.merchantUI.SetupMerchantUI(merchant, inventory);
+        ui.merchantUI.gameObject.SetActive(true);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        base.OnTriggerEnter2D(collision);
+        inventory = player.GetComponent<Inventory_Player>();
+        merchant.SetInventory(inventory);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnTriggerExit2D(Collider2D collision)
     {
-        
+        base.OnTriggerExit2D(collision);
+
+        ui.SwitchOffAllToolTips();
+        ui.merchantUI.gameObject.SetActive(false);
     }
 }
