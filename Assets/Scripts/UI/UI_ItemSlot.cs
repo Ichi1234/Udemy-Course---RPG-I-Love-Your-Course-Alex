@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public Inventory_Item itemInSlot;
+    public Inventory_Item itemInSlot { get; private set; }
     protected Inventory_Player inventory;
     protected UI ui;
     protected RectTransform rect;
@@ -14,7 +14,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemStackSize;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         ui = GetComponentInParent<UI>();
         rect = GetComponent<RectTransform>();

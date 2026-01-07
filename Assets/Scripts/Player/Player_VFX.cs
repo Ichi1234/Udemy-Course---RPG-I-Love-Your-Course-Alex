@@ -20,7 +20,7 @@ public class Player_VFX : Entity_VFX
         {
             StopCoroutine(imageEchoCo);
         }
-        StartCoroutine(ImageEchoEffectCo(duration));
+        imageEchoCo = StartCoroutine(ImageEchoEffectCo(duration));
     }
 
     private IEnumerator ImageEchoEffectCo(float duration)

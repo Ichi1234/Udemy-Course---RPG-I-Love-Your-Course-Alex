@@ -15,6 +15,7 @@ public class UI_Merchant : MonoBehaviour
         this.inventory = inventory;
 
         this.inventory.OnInventoryChange += UpdateSlotUI;
+        this.merchant.OnInventoryChange += UpdateSlotUI;
         UpdateSlotUI();
 
         UI_MerchantSlot[] merchantSlots = GetComponentsInChildren<UI_MerchantSlot>();
@@ -36,4 +37,5 @@ public class UI_Merchant : MonoBehaviour
         merchantSlots.UpdateSlots(merchant.itemList);
         equipSlot.UpdateEquipmentSlots(inventory.equipList);
     }
+
 }

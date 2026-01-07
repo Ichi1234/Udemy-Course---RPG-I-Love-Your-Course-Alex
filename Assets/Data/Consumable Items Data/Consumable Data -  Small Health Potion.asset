@@ -15,6 +15,9 @@ MonoBehaviour:
   itemPrice: 100
   minStackSizeAtShop: 1
   maxStackSizeAtShop: 5
+  itemRarity: 100
+  dropChance: 79.6
+  maxDropChance: 79.6
   itemName: Small Health Potion
   itemIcon: {fileID: -2079637121, guid: f2c6c3ff4887f4949b80f6591e045cc8, type: 3}
   itemType: 4

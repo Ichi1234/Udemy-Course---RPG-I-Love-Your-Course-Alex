@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ff1d56dcb1b15342b81c3b3f4802c9b, type: 3}
   m_Name: Material Data - Baguete
   m_EditorClassIdentifier: 
+  itemPrice: 100
+  minStackSizeAtShop: 1
+  maxStackSizeAtShop: 1
+  itemRarity: 669
+  dropChance: 33.2
+  maxDropChance: 62.3
   itemName: Baguete
   itemIcon: {fileID: -1072319173, guid: f2c6c3ff4887f4949b80f6591e045cc8, type: 3}
   itemType: 0

@@ -15,6 +15,9 @@ MonoBehaviour:
   itemPrice: 100
   minStackSizeAtShop: 1
   maxStackSizeAtShop: 2
+  itemRarity: 100
+  dropChance: 78.4
+  maxDropChance: 78.4
   itemName: Scroll of Vengence
   itemIcon: {fileID: 1124708073, guid: f2c6c3ff4887f4949b80f6591e045cc8, type: 3}
   itemType: 4

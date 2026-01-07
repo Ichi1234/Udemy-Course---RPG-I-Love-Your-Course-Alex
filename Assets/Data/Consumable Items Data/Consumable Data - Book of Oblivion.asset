@@ -12,8 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02836c79ce36d14a989267c7cc1c087, type: 3}
   m_Name: Consumable Data - Book of Oblivion
   m_EditorClassIdentifier: 
+  itemPrice: 100
+  minStackSizeAtShop: 1
+  maxStackSizeAtShop: 1
+  itemRarity: 763
+  dropChance: 23.8
+  maxDropChance: 65
   itemName: Book of Oblivion
   itemIcon: {fileID: 941431757, guid: f2c6c3ff4887f4949b80f6591e045cc8, type: 3}
   itemType: 4
   maxStackSize: 1
   itemEffect: {fileID: 11400000, guid: b494ee2448733ae4b9b869a5acb2a699, type: 2}
+  craftRecipe: []

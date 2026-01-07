@@ -57,7 +57,7 @@ public class UI_SkillToolTip : UI_ToolTip
         {
             StopCoroutine(textEffectCo);
         }
-        StartCoroutine(TextBlinkEffect(skillRequirements, .15f, 3));
+        textEffectCo = StartCoroutine(TextBlinkEffect(skillRequirements, .15f, 3));
     }
 
     private IEnumerator TextBlinkEffect(TextMeshProUGUI text, float blinkInterval, int blinkCount)
