@@ -22,6 +22,11 @@ public class Entity_DropManager : MonoBehaviour
 
     public virtual void DropItems()
     {
+        if (dropData == null)
+        {
+            Debug.Log("You need to assign drop data on entity" + gameObject.name);
+            return;
+        }
         List<ItemDataSO> itemsToDrop = RollDrops();
         int amountToDrop = Mathf.Min(itemsToDrop.Count, maxItemsDrop);
 

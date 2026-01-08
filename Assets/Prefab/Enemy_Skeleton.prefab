@@ -1053,6 +1053,7 @@ GameObject:
   - component: {fileID: 9129465872304365485}
   - component: {fileID: 4665298223798079127}
   - component: {fileID: 2731340333460698409}
+  - component: {fileID: -867421637239423546}
   m_Layer: 8
   m_Name: Enemy_Skeleton
   m_TagString: Untagged
@@ -1268,16 +1269,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c5af5ddcb5b684f8d71c292b38dc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicAttackScale:
+    physical: 1
+    elemental: 1
+    chillDuration: 3
+    chillSlowMultiplier: 0.2
+    burnDuration: 3
+    burnDamageScale: 1
+    shockDuration: 3
+    shockDamageScale: 1
+    shockCharge: 0.4
   targetCheck: {fileID: 4464458000990469903}
   targetCheckRadius: 1
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 128
-  defaultDuration: 3
-  chillSlowMultiplier: 0.4
-  electrifyChargeBuildUp: 0.4
-  fireScale: 0.8
-  lightningScale: 0.8
 --- !u!114 &9129465872304365485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,7 +1297,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  isDead: 0
   regenInterval: 1
   canRegenerateHalth: 1
   knockbackPower: {x: 1.5, y: 2.5}
@@ -1318,7 +1323,7 @@ MonoBehaviour:
   critHitVfx: {fileID: 1560299170472815644, guid: f1eebd15f890d594e8bac8127fc6e3cc, type: 3}
   chillVfx: {r: 0.4745098, g: 0.8352941, b: 0.9529412, a: 1}
   burnVfx: {r: 1, g: 0.32941177, b: 0.18039216, a: 1}
-  electricVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  shockVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   attackAlert: {fileID: 7092648252157918281}
 --- !u!114 &2731340333460698409
 MonoBehaviour:
@@ -1335,6 +1340,22 @@ MonoBehaviour:
   lightingStrikeVfx: {fileID: 4180759810247402923, guid: 69a6a126ed53b45418428eec44502227, type: 3}
   currentCharge: 0
   maximumCharge: 1
+--- !u!114 &-867421637239423546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7494244269608802732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4106c2f7b184e1d4688f6cf8382e1637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDropPrefab: {fileID: 4048494109857061396, guid: cea397bff72ce734e8d5203b9a56c4f8, type: 3}
+  dropData: {fileID: 11400000, guid: 17d5ef34f4874464cb5a4e6f756e50ab, type: 2}
+  maxRarityAmount: 1200
+  maxItemsDrop: 3
 --- !u!1 &7513260837113780481
 GameObject:
   m_ObjectHideFlags: 0
