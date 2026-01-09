@@ -10,14 +10,12 @@ public class ItemEffect_Buff : ItemEffect_DataSO
 
     private Player_Stats playerStats;
 
-    public override bool CanBeUsed()
+    public override bool CanBeUsed(Player player)
     {
-        if (playerStats == null)
+
+        if (player.stats.CanApplyBuffOf(source))
         {
-            playerStats = FindFirstObjectByType<Player_Stats>();
-        }
-        if (playerStats.CanApplyBuffOf(source))
-        {
+            this.player = player;
             return true;
         }
         else
@@ -30,5 +28,6 @@ public class ItemEffect_Buff : ItemEffect_DataSO
     public override void ExcuteEffect()
     {
         playerStats.ApplyBuff(buffsToApply, duration, source);
+        player = null;
     }
 }

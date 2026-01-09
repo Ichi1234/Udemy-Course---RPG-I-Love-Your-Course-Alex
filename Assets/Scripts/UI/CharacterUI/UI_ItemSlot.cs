@@ -11,8 +11,8 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
     protected RectTransform rect;
 
     [Header("UI Slot Setup")]
-    [SerializeField] private Image itemIcon;
-    [SerializeField] private TextMeshProUGUI itemStackSize;
+    [SerializeField] protected Image itemIcon;
+    [SerializeField] protected TextMeshProUGUI itemStackSize;
 
     protected virtual void Awake()
     {
@@ -39,10 +39,6 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
 
             if (itemInSlot.itemData.itemType == ItemType.Consumable)
             {
-                if (!itemInSlot.itemEffect.CanBeUsed())
-                {
-                    return;
-                }
                 inventory.TryUseItem(itemInSlot);
             }
             else
