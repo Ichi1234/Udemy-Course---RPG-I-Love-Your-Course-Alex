@@ -1,8 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class UI_SkillTree : MonoBehaviour
 {
     [SerializeField] private int skillPoints;
+    [SerializeField] private TextMeshProUGUI skillPontsText;
     [SerializeField] private UI_TreeConnectHandler[] parentNodes;
 
     private UI_TreeNode[] allTreeNodes;
@@ -11,6 +13,12 @@ public class UI_SkillTree : MonoBehaviour
     private void Start()
     {
         UpdateAllConnections();
+        UpdateSkillPointsUI();
+    }
+
+    private void UpdateSkillPointsUI()
+    {
+        skillPontsText.text = skillPoints.ToString();
     }
 
     public void UnlockDefaultSkills()
@@ -34,8 +42,13 @@ public class UI_SkillTree : MonoBehaviour
             node.Refund();
         }
     }
-    public bool EnoughSkillPoints(int cost) => skillPoints >= cost; 
-    public void RemoveSkillPoints(int cost) => skillPoints -= cost;
+    public bool EnoughSkillPoints(int cost) => skillPoints >= cost;
+    public void RemoveSkillPoints(int cost)
+    {
+        skillPoints -= cost;
+        UpdateSkillPointsUI();
+    }
+
     public void AddSkillPoints(int points) => skillPoints += points;
 
 

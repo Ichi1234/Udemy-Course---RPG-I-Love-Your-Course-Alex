@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class UI_Merchant : MonoBehaviour
@@ -5,6 +6,8 @@ public class UI_Merchant : MonoBehaviour
     private Inventory_Player inventory;
     private Inventory_Merchant merchant;
 
+    [SerializeField] private TextMeshProUGUI goldText;
+    [Space]
     [SerializeField] private UI_ItemSlotParent merchantSlots;
     [SerializeField] private UI_ItemSlotParent inventorySlot;
     [SerializeField] private UI_EquipSlotParent equipSlot;
@@ -36,6 +39,8 @@ public class UI_Merchant : MonoBehaviour
         inventorySlot.UpdateSlots(inventory.itemList);
         merchantSlots.UpdateSlots(merchant.itemList);
         equipSlot.UpdateEquipmentSlots(inventory.equipList);
+
+        goldText.text = inventory.gold.ToString("N0") + "g.";
     }
 
 }

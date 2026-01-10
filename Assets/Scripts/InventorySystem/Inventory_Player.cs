@@ -48,8 +48,8 @@ public class Inventory_Player : Inventory_Base
 
     public void TryEquipItem(Inventory_Item item)
     {
-        Inventory_Item inventoryItem = FindItem(item);
-        List<Inventory_EquipmentSlot> matchingsSlots = equipList.FindAll(slot => slot.slotType == item.itemData.itemType);
+        var inventoryItem = FindItem(item);
+        var matchingsSlots = equipList.FindAll(slot => slot.slotType == item.itemData.itemType);
 
         foreach (var slot in matchingsSlots)
         {

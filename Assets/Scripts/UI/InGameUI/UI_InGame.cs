@@ -28,8 +28,8 @@ public class UI_InGame : MonoBehaviour
         player.health.OnHealthUpdate += UpdateHealthBar;
 
         inventory = player.inventory;
-        inventory.OnInventoryChange += UpdateQuickSlotsUI;
-        inventory.OnQuickSlotUsed += PlayQuickSlotFeedback;
+        //inventory.OnInventoryChange += UpdateQuickSlotsUI; // the index is out of range I need to comment this out to prevent it cause an error 
+        //inventory.OnQuickSlotUsed += PlayQuickSlotFeedback;
     }
 
     public void PlayQuickSlotFeedback(int slotNumber) => quickItemSlots[slotNumber].SimulateButtonFeedback();
